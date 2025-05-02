@@ -2,6 +2,7 @@
 
 import {
     Sheet,
+    SheetClose,
     SheetContent,
     SheetDescription,
     SheetHeader,
@@ -40,33 +41,38 @@ const MobileNav = ({ user}: MobileNavProps ) => {
             Horizon
             </h1>
             </Link>
+            <div className="mobilenav-sheet">
+              <SheetClose asChild>
+                <nav className="flex h-full flex-col gap-6
+                pt-16 text-white">
+                  {sidebarLinks.map((item) => {
+                  const isActive = 
+                  pathname === item.route || pathname.startsWith(`${item.route}/`)
+                  return (
+                    <><SheetClose>
 
-            {sidebarLinks.map((item) => {
-
-                const isActive = 
-                pathname === item.route || pathname.startsWith(`${item.route}/`)
-
-                return (
-                    <Link href={item.route} key={item.label}
-                    className={cn('sidebar-link', {'bg-bank-gradient': isActive })}
+                    </SheetClose><Link href={item.route} key={item.label}
+                      className={cn('sidebar-link', { 'bg-bank-gradient': isActive })}
                     >
-                     <div className="relative size-6">
-                        <Image
-                          src={item.imgURL}
-                          alt={item.label}
-                          fill
-                          className={cn({
-                            'brightness-[3] invert-0': isActive
-                          })}
-                        />
-                     </div>
-                     <p className={cn("sidebar-label", { "!text-white": isActive })}>
-                      {item.label}
-                     </p>
-                    </Link>
-                )
-            }
-        )}
+                        <div className="relative size-6">
+                          <Image
+                            src={item.imgURL}
+                            alt={item.label}
+                            fill
+                            className={cn({
+                              'brightness-[3] invert-0': isActive
+                            })} />
+                        </div>
+                        <p className={cn("sidebar-label", { "!text-white": isActive })}>
+                          {item.label}
+                        </p>
+                      </Link></>
+                   )
+                   }
+                   )}
+                </nav>
+              </SheetClose>
+            </div>
         </SheetContent>
       </Sheet>
 
