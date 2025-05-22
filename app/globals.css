@@ -33,3 +33,19 @@ body {
     text-wrap: balance;
   }
 }
+
+.border {
+  border-width: 1px;
+}
+
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity, 1)) /* #ffffff */;
+}
+
+/*Bank Card*/
+.bank-card {
+  @apply relative flex h-[190px] w-full max-w-[320px]
+justify-between rounded-[20px] border border-white
+bg-bank-gradient shadow-creditCard backdrop-blur-[6px];
+}
